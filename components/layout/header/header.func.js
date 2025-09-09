@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { dimensionsStore } from "../../../store/dimensionStore";
 
 export function useHeaderLogic() {
   const navItems = [
-    "Accueil",
-    "Omra",
-    "Omra combinée",
-    "Hajj",
-    "Voyages Monde",
-    "Nos services",
+    { id: "Accueil", label: "Accueil", href: "/" },
+    { id: "Omra", label: "Omra", href: "/omra" },
+    { id: "Omra combinée", label: "Omra combinée", href: "/omra-combinee" },
+    { id: "Hajj", label: "Hajj", href: "/hajj" },
+    { id: "Voyages Monde", label: "Voyages Monde", href: "/voyages-monde" },
+    { id: "Nos services", label: "Nos services", href: "/nos-services" },
   ];
 
   const [activeItem, setActiveItem] = useState("Hajj");
@@ -22,6 +23,7 @@ export function useHeaderLogic() {
   const selectorRef = useRef(null);
   const itemRefs = useRef({});
   const vw = dimensionsStore((s) => s.vw);
+  const pathname = usePathname();
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -50,10 +52,29 @@ export function useHeaderLogic() {
 
   const toggleMenu = () => setMenuOpen((v) => !v);
 
+  const activeNavId = useMemo(() => {
+    const normalize = (s) => {
+      if (!s) return "/";
+      if (s.length > 1 && s.endsWith("/")) return s.slice(0, -1);
+      return s;
+    };
+    const currentPath = normalize(pathname || (typeof window !== "undefined" ? window.location.pathname : "/"));
+    let matched = null;
+    for (const it of navItems) {
+      const href = normalize(it.href);
+      const isExact = currentPath === href;
+      const isSub = currentPath.startsWith(href + "/");
+      if (isExact || isSub) {
+        if (!matched || href.length > matched.href.length) matched = { id: it.id, href };
+      }
+    }
+    return matched?.id || activeItem;
+  }, [pathname, navItems, activeItem]);
+
   useEffect(() => {
     const container = navListRef.current;
     const selector = selectorRef.current;
-    const activeEl = itemRefs.current[activeItem];
+    const activeEl = itemRefs.current[activeNavId];
     if (!container || !selector || !activeEl) {
       if (selector) selector.style.opacity = 0;
       return;
@@ -65,7 +86,7 @@ export function useHeaderLogic() {
       selector.style.width = `${width}px`;
       selector.style.opacity = 1;
     });
-  }, [activeItem, vw]);
+  }, [activeNavId, vw]);
 
   // Smooth hide/show of navbar on scroll (translateY)
   useEffect(() => {
@@ -137,6 +158,7 @@ export function useHeaderLogic() {
     navListRef,
     selectorRef,
     setItemRef,
+    activeNavId,
   };
 }
 

@@ -2,7 +2,9 @@
 
 import React from "react";
 import styles from "./header.module.css";
-import { Menu } from "./icons/icons";
+import { Menu } from "../../icons/icons";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useHeaderLogic } from "./header.func";
 
 export default function Header() {
@@ -20,7 +22,10 @@ export default function Header() {
     navListRef,
     selectorRef,
     setItemRef,
+    activeNavId,
   } = useHeaderLogic();
+  const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <header className={styles.headerRoot} ref={headerRef}>
@@ -55,19 +60,13 @@ export default function Header() {
           <ul className={styles.navList} ref={navListRef}>
             {navItems.map((item) => (
               <li
-                key={item}
-                className={`${styles.navItem} ${activeItem === item ? styles.active : ""
-                  }`}
-                ref={setItemRef(item)}
+                key={item.id}
+                className={styles.navItem}
+                ref={setItemRef(item.id)}
               >
-                <button
-                  type="button"
-                  className={styles.navButton}
-                  aria-current={activeItem === item ? "page" : undefined}
-                  onClick={() => setActiveItem(item)}
-                >
-                  {item}
-                </button>
+                <Link href={item.href} className={styles.navButton} aria-current={activeNavId === item.id ? "page" : undefined}>
+                  {item.label}
+                </Link>
               </li>
             ))}
             <div className={styles.selector} ref={selectorRef} />
@@ -104,19 +103,15 @@ export default function Header() {
             <ul className={styles.drawerNavList}>
               {navItems.map((item) => (
                 <li
-                  key={item}
-                  className={`${styles.drawerNavItem} ${activeItem === item ? styles.drawerNavItemActive : ""
-                    }`}
+                  key={item.id}
+                  className={`${styles.drawerNavItem} ${activeNavId === item.id ? styles.drawerNavItemActive : ""}`}
                 >
                   <button
                     type="button"
                     className={styles.drawerNavButton}
-                    onClick={() => {
-                      setActiveItem(item);
-                      setMenuOpen(false);
-                    }}
+                    onClick={() => { router.push(item.href); setMenuOpen(false); }}
                   >
-                    {item}
+                    {item.label}
                   </button>
                 </li>
               ))}

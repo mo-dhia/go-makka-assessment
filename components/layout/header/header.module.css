@@ -131,15 +131,7 @@
   position: relative;
 }
 
-.active a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 0.16vw; /* 3px */
-  background-color: var(--color-brand);
-}
+
 
 .actions {
   display: flex;
@@ -196,7 +188,7 @@
   .navList { gap: 2.34vw; }
   .navItem a { padding: 1.37vw 0; }
   .navButton { padding: 1.37vw 0; font-size: 1.37vw; }
-  .active a::after { height: 0.29vw; }
+  
   .actions { gap: 1.95vw; }
   .actionLink { gap: 0.78vw; }
   .icon { width: 1.56vw; height: 1.56vw; font-size: 0.98vw; }
@@ -222,7 +214,7 @@
   .navList { gap: 6.11vw; }
   .navItem a { padding: 3.56vw 0; }
   .navButton { padding: 3.56vw 0; font-size: 3.56vw; }
-  .active a::after { height: 0.76vw; }
+  
   .actions { gap: 5.09vw; }
   .actionLink { gap: 2.04vw; }
   .icon { width: 4.07vw; height: 4.07vw; font-size: 2.54vw; }
@@ -236,7 +228,8 @@
   background: rgba(0, 0, 0, 0.0);
   pointer-events: none;
   transition: background 200ms ease;
-  z-index: 30;
+  height: 100vh;
+  z-index: 9999;
   display: none;
 }
 
@@ -252,7 +245,7 @@
   background: var(--color-background);
   transform: translateX(-100%);
   transition: transform 220ms ease;
-  z-index: 40;
+  z-index: 10000;
   padding: 4.07vw; /* 16px mobile */
   display: none; /* hidden by default; enabled on mobile for smooth slide */
   flex-direction: column;
