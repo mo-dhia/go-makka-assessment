@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .banner { height: 101.78vw; /* 400px -> 393 */ background-position: 70% center }
+  .banner { height: 101.78vw; /* 400px -> 393 */ background-position: 70% center; margin-bottom: -20vw; }
   .content { max-width: 94vw }
   .title { font-size: 12.21vw; /* 48px -> mobile prominent */ margin-bottom: 4.83vw /* 19px approx */ }
   .subtitle { font-size: 4.58vw; /* 18px approx */ max-width: 100% }

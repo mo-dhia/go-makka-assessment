@@ -8,7 +8,8 @@
 .grid { display: flex; align-items: flex-start; gap: 2.08vw; flex-wrap: nowrap }
 .column { display: grid; gap: 0.73vw; flex: 1 1 0; min-width: 0 }
 .item { background: #fff; border: 0.05vw solid #e5e7eb; border-radius: 0.52vw; overflow: hidden; box-shadow: 0 0.21vw 0.63vw rgba(0,0,0,.05) }
-.trigger { width: 100%; padding: 0.94vw 1.15vw; display: flex; align-items: center; justify-content: space-between; background: #fff; border: none; cursor: pointer; font-size: 0.89vw; color: #111; text-align: left }
+.trigger { width: 100%; padding: 0.94vw 1.15vw; display: flex; align-items: center; justify-content: space-between; background: #fff; border: none; cursor: pointer; font-size: 0.89vw; color: #111; text-align: left; transition: background-color .15s ease }
+.trigger:hover, .trigger:focus-visible { background: #fafafa }
 .chevron { color: var(--color-muted); transition: transform .2s ease }
 .open { transform: rotate(180deg) }
 .panel { background: #fafafa; border-top: 0.05vw solid #e5e7eb; overflow: hidden }

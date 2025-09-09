@@ -3,7 +3,8 @@
 .title { font-family: var(--font-heading); font-weight: 700; color: var(--color-brand-blue); font-size: 1.46vw; line-height: 1.3; margin-bottom: 1.56vw }
 
 .list { display: grid; gap: 0.78vw; margin-bottom: 1.56vw }
-.item { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 0.62vw; color: #374151; font-size: 0.89vw; line-height: 1.9 }
+.item { display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 0.62vw; color: #374151; font-size: 0.89vw; line-height: 1.9; padding: 0.31vw 0.42vw; border-radius: 0.31vw; transition: background-color .15s ease }
+.item:hover { background: #f3f4f6 }
 .icon { width: 0.94vw; height: 0.94vw; object-fit: contain; margin-top: 0.32vw }
 .iconAlt { width: 0.89vw; height: 0.89vw; object-fit: contain; margin-top: 0.32vw }
 .weeks { padding-left: 1.04vw; border-left: 0.10vw dashed var(--color-brand-gold) }

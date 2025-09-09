@@ -4,9 +4,11 @@
 .intro { font-size: 0.94vw; /* 18px */ color: #4b5563; margin-bottom: 1.67vw }
 
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.56vw }
-.card { background: #ffffff; border-radius: 0.63vw; padding: 1.56vw 1.25vw 1.88vw; position: relative; box-shadow: 0 0.26vw 0.83vw rgba(0,0,0,0.06) }
+.card { background: #ffffff; border-radius: 0.63vw; padding: 1.56vw 1.25vw 1.88vw; position: relative; box-shadow: 0 0.26vw 0.83vw rgba(0,0,0,0.06); transition: transform .25s ease, box-shadow .25s ease }
+.card:hover { transform: translateY(-0.21vw); box-shadow: 0 0.63vw 1.67vw rgba(0,0,0,0.12) }
 .card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 0.31vw; background: var(--color-brand-gold); border-top-left-radius: 0.63vw; border-top-right-radius: 0.63vw }
-.badge { width: 2.19vw; height: 2.19vw; border-radius: 50%; background: var(--color-brand-gold); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 1.25vw; margin: 0 auto 1.04vw }
+.badge { width: 2.19vw; height: 2.19vw; border-radius: 50%; background: var(--color-brand-gold); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 1.25vw; margin: 0 auto 1.04vw; transition: transform .25s ease }
+.card:hover .badge { transform: scale(1.06) }
 .cardTitle { text-align: center; font-weight: 700; font-size: 0.94vw; color: #111; margin-bottom: 0.52vw }
 .cardDesc { text-align: center; color: #6b7280; font-size: 0.83vw; line-height: 1.8 }
 
