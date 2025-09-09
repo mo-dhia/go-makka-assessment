@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./header.module.css";
+import { Menu } from "./icons/icons";
 
 export default function Header() {
   const navItems = [
@@ -63,10 +64,9 @@ export default function Header() {
 
       <nav className={styles.navBar}>
         <div className={styles.container}>
+          <div className={styles.currentItem} aria-live="polite">{activeItem}</div>
           <button type="button" className={styles.hamburger} onClick={toggleMenu} aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <Menu className={styles.hamburgerIcon} />
           </button>
 
           <ul className={styles.navList}>
@@ -119,7 +119,12 @@ export default function Header() {
           >
             <ul className={styles.drawerNavList}>
               {navItems.map((item) => (
-                <li key={item} className={styles.drawerNavItem}>
+                <li
+                  key={item}
+                  className={`${styles.drawerNavItem} ${
+                    activeItem === item ? styles.drawerNavItemActive : ""
+                  }`}
+                >
                   <button
                     type="button"
                     className={styles.drawerNavButton}

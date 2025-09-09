@@ -21,19 +21,18 @@
 .branding {
   display: flex;
   flex-direction: column;
-  padding: 16px 0;
+  padding: 0.83vw 0; /* 16px */
 }
 
 .logoTitle {
-  font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
-  font-size: 28px;
+  font-size: 1.46vw; /* 28px */
 }
 
 .tagline {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 0.63vw; /* 12px */
   opacity: 0.9;
 }
 
@@ -41,18 +40,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 16px 0;
+  padding: 0.83vw 0; /* 16px */
 }
 
 .phone {
-  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw; /* 20px */
 }
 
 .address {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 0.63vw; /* 12px */
   opacity: 0.9;
 }
 
@@ -62,15 +60,48 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.hamburger {
+  display: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  width: 4.07vw; /* base value; overridden on mobile */
+  max-width: 40px;
+  height: 2.08vw; /* base value; overridden on mobile */
+  max-height: 28px;
+  padding: 0;
+  margin-right: 1.04vw;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 0.21vw; /* ~4px */
+  max-height: 4px;
+  background: var(--color-text);
+  border-radius: 9999px;
+}
+
+.hamburger span + span { margin-top: 0.31vw; }
+
 .navList {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 1.25vw; /* 24px */
 }
+
+.currentItem {
+  display: none;
+  font-weight: 600;
+  font-size: 0.83vw; /* 16px */
+}
+
+.hamburgerIcon { width: 100%; height: 100%; color: var(--color-text); }
 
 .navItem a {
   display: inline-block;
-  padding: 14px 0;
+  padding: 0.73vw 0; /* 14px */
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
@@ -80,13 +111,13 @@
   appearance: none;
   background: transparent;
   border: none;
-  padding: 14px 0;
+  padding: 0.73vw 0; /* 14px */
   margin: 0;
   cursor: pointer;
   color: var(--color-text);
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.73vw; /* 14px */
 }
 
 .active a {
@@ -100,14 +131,14 @@
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 3px;
+  height: 0.16vw; /* 3px */
   background-color: var(--color-brand);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.04vw; /* 20px */
 }
 
 .actionLink {
@@ -116,7 +147,7 @@
   border: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.42vw; /* 8px */
   color: var(--color-text);
   text-decoration: none;
   font-weight: 500;
@@ -124,19 +155,110 @@
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
+  width: 0.83vw; /* 16px */
+  height: 0.83vw; /* 16px */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background: var(--color-border);
-  font-size: 10px;
+}
+
+.icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Layout for nav row: menu left, actions right */
 .navBar .container {
-  height: 52px;
+  height: 2.71vw; /* 52px */
 }
 
 
+/* Tablet styles: 1024 reference */
+@media screen and (max-width: 1024px) {
+  .branding { padding: 1.56vw 0; }
+  .logoTitle { font-size: 2.73vw; }
+  .tagline { font-size: 1.17vw; }
+  .contact { padding: 1.56vw 0; }
+  .phone { font-size: 1.95vw; }
+  .address { font-size: 1.17vw; }
+  .navList { gap: 2.34vw; }
+  .navItem a { padding: 1.37vw 0; }
+  .navButton { padding: 1.37vw 0; font-size: 1.37vw; }
+  .active a::after, .active .navButton::after { height: 0.29vw; }
+  .actions { gap: 1.95vw; }
+  .actionLink { gap: 0.78vw; }
+  .icon { width: 1.56vw; height: 1.56vw; font-size: 0.98vw; }
+  .navBar .container { height: 5.08vw; }
+}
+
+/* Mobile styles: 393 reference */
+@media screen and (max-width: 600px) {
+  .hamburger { display: inline-flex; width: 8.14vw; height: 8.14vw; }
+  .hamburgerIcon { width: 100%; height: 100%; }
+  .navList { display: none; }
+  .currentItem { display: inline-flex; align-items: center; font-size: 4.07vw; }
+  .actions { display: none; }
+  .navBar .container { justify-content: space-between; }
+  .backdrop { display: block; }
+  .drawer { display: flex; }
+  .branding { padding: 4.07vw 0; }
+  .logoTitle { font-size: 7.12vw; }
+  .tagline { font-size: 3.05vw; }
+  .contact { padding: 4.07vw 0; width: 35vw;}
+  .phone { font-size: 5.09vw; }
+  .address { font-size: 3.05vw; }
+  .navList { gap: 6.11vw; }
+  .navItem a { padding: 3.56vw 0; }
+  .navButton { padding: 3.56vw 0; font-size: 3.56vw; }
+  .active a::after, .active .navButton::after { height: 0.76vw; }
+  .actions { gap: 5.09vw; }
+  .actionLink { gap: 2.04vw; }
+  .icon { width: 4.07vw; height: 4.07vw; font-size: 2.54vw; }
+  .navBar .container { height: 13.23vw; }
+}
+
+/* Backdrop and drawer */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.0);
+  pointer-events: none;
+  transition: background 200ms ease;
+  z-index: 30;
+  display: none;
+}
+
+.backdropOpen { background: rgba(0, 0, 0, 0.35); pointer-events: auto; display: block; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75vw;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--color-background);
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  z-index: 40;
+  padding: 4.07vw; /* 16px mobile */
+  display: none; /* hidden by default; enabled on mobile for smooth slide */
+  flex-direction: column;
+}
+
+.drawerOpen { transform: translateX(0); }
+
+.drawerNavList { list-style: none; display: flex; flex-direction: column; gap: 4.07vw; }
+.drawerNavItem { position: relative; }
+.drawerNavButton { appearance: none; background: transparent; border: none; text-align: left; font-size: 4.07vw; cursor: pointer; color: var(--color-text); width: 100%; padding-bottom: 3.56vw; }
+.drawerNavItemActive::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0.16vw; background: var(--color-brand); }
+
+/* Ensure mobile overrides win over later base rules */
+@media screen and (max-width: 600px) {
+  .drawer { display: flex !important; }
+  .backdrop { display: block !important; }
+}
