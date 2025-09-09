@@ -28,10 +28,25 @@ a {
   --color-border: #e5e7eb;
   --color-background: #ffffff;
 
-  --font-heading: var(--font-montserrat, system-ui, Arial, sans-serif);
-  --font-body: var(--font-inter, system-ui, Arial, sans-serif);
+  --font-heading: var(--font-poppins, system-ui, Arial, sans-serif);
+  --font-body: var(--font-poppins, system-ui, Arial, sans-serif);
 
-  --padding-base: 48px;
+  /* Desktop base (1920 reference) */
+  --padding-base: 2.5vw; /* 48px -> 48/1920*100 */
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    /* Tablet base (1024 reference) */
+    --padding-base: 4.69vw; /* 48px -> 48/1024*100 */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    /* Mobile base (393 reference) */
+    --padding-base: 3vw; /* 48px -> 48/393*100 */
+  }
 }
 
 body {
