@@ -1,8 +1,8 @@
 import Banner from "../../../components/banner/banner";
 import HajjContextSection from "../../../sections/Hajj/context/context";
 import SupportTechniqueSection from "../../../sections/Hajj/supportTechnique/supportTechnique";
-import Issues from "../../../sections/issues/issues";
-import Solutions from "../../../sections/solutions/solutions";
+import Issues from "../../../sections/Hajj/issues/issues";
+import Solutions from "../../../sections/Hajj/solutions/solutions";
 import styles from "./hajj.module.css";
 
 export default function HajjPage() {

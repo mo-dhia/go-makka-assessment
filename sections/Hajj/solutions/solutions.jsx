@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import styles from './solutions.module.css';
-import useAutoHeightTransition from '../../hooks/useAutoHeightTransition';
+import useAutoHeightTransition from '../../../hooks/useAutoHeightTransition';
 import { useSolutionsLogic } from './solutions.func';
 
 const faqs = [
