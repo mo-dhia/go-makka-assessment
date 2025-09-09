@@ -33,6 +33,28 @@
 .cardLeft { border-color: var(--color-brand-blue) }
 .cardRight { border-color: var(--color-brand-gold) }
 
+/* Modal */
+.modalOverlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: grid; place-items: center; z-index: 1000; animation: fadeIn .2s ease forwards }
+.modal { width: 92vw; max-width: 34vw; background: #fff; border-radius: 0.83vw; box-shadow: 0 1.04vw 3.13vw rgba(0,0,0,.18); transform: translateY(10px) scale(.98); opacity: 0; animation: popIn .22s ease forwards }
+.modalHeader { display: flex; align-items: center; justify-content: space-between; padding: 1.15vw 1.46vw; border-bottom: 1px solid #eef2f7 }
+.modalTitle { margin: 0; font-size: 1.04vw; font-weight: 700; color: var(--color-text) }
+.modalClose { appearance: none; border: none; background: transparent; font-size: 1.46vw; line-height: 1; cursor: pointer; color: #64748b }
+.form { padding: 1.25vw 1.46vw }
+.formRow { display: grid; gap: 0.42vw; margin-bottom: 0.94vw }
+.label { font-weight: 600; color: #334155; font-size: 0.83vw }
+.input, .textarea { width: 100%; padding: 0.73vw 0.83vw; border-radius: 0.42vw; border: 1px solid #e5e7eb; font-size: 0.83vw; outline: none }
+.input:focus, .textarea:focus { border-color: var(--color-brand-blue); box-shadow: 0 0 0 .15vw rgba(11,90,175,.12) }
+.textarea { min-height: 6.5vw; resize: vertical }
+.modalFooter { display: flex; gap: 0.83vw; justify-content: flex-end; padding: 0.94vw 1.46vw 1.46vw }
+.btnPrimary { background: var(--color-brand-blue); color: #fff; border: none; border-radius: 0.42vw; padding: 0.73vw 1.15vw; font-weight: 700; cursor: pointer }
+.btnSecondary { background: #f1f5f9; color: #0f172a; border: none; border-radius: 0.42vw; padding: 0.73vw 1.15vw; font-weight: 600; cursor: pointer }
+.success { display: grid; gap: 0.83vw; padding: 1.56vw; text-align: center }
+.successIcon { width: 2.6vw; height: 2.6vw; display: inline-grid; place-items: center; margin: 0 auto; background: #22c55e; color: #fff; border-radius: 50%; font-weight: 800 }
+.successText { color: #14532d; font-weight: 700 }
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes popIn { from { opacity: 0; transform: translateY(10px) scale(.98) } to { opacity: 1; transform: translateY(0) scale(1) } }
+
 /* Tablet */
 @media screen and (max-width: 1024px) {
   .container { max-width: 86.91vw }
@@ -49,6 +71,9 @@
   .bannerLeft, .bannerRight { padding: 1.17vw; border-radius: 0.59vw }
   .feature { font-size: 1.56vw; padding: 1.37vw 1.17vw }
   .cta { padding: 1.56vw; border-radius: 0.59vw }
+  .modal { max-width: 64vw; border-radius: 1.17vw }
+  .modalTitle { font-size: 1.76vw }
+  .label, .input, .textarea { font-size: 1.37vw }
 }
 
 /* Mobile */
@@ -67,4 +92,12 @@
   .bannerLeft, .bannerRight { padding: 2.29vw; border-radius: 1.53vw }
   .feature { font-size: 3.3vw; padding: 3.05vw 2.54vw }
   .cta { padding: 3.81vw; border-radius: 1.53vw }
+  .modal { max-width: 94vw; border-radius: 3.81vw }
+  .modalHeader { padding: 4.02vw }
+  .modalTitle { font-size: 4.07vw }
+  .form { padding: 3.3vw 4.02vw }
+  .formRow { gap: 1.53vw; margin-bottom: 3.05vw }
+  .label, .input, .textarea { font-size: 3.3vw }
+  .textarea { min-height: 28vw }
+  .modalFooter { gap: 2.29vw; padding: 3.3vw 4.02vw 4.02vw }
 }
