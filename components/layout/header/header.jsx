@@ -158,8 +158,17 @@ export default function Header() {
                   </button>
                 </li>
               ))}
-
-             
+              {/* Account / Login */}
+              <li className={styles.drawerNavItem}>
+                <button
+                  type="button"
+                  className={styles.drawerNavButton}
+                  onClick={!user ? () => { setMenuOpen(false); handleLogin(); } : undefined}
+                >
+                  {user ? displayName : "Connectez-vous"}
+                </button>
+              </li>
+              
             </ul>
           </aside>
         </div>

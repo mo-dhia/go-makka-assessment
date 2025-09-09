@@ -10,6 +10,7 @@ export function useHeaderLogic() {
     { id: "Hajj", label: "Hajj", href: "/hajj" },
     { id: "Voyages Monde", label: "Voyages Monde", href: "/voyages-monde" },
     { id: "Nos services", label: "Nos services", href: "/nos-services" },
+    { id: "Admin", label: "Admin", href: "/admin" },
   ], []);
 
   const [activeItem, setActiveItem] = useState("Hajj");
