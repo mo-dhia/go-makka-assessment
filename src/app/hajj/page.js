@@ -9,6 +9,8 @@ import Infos from "../../../sections/Hajj/infos/infos";
 import Strategy from "../../../sections/Hajj/strategy/strategy";
 import WhyUs from "../../../sections/Hajj/whyUs/whyUs";
 import Makkah from "../../../sections/Hajj/makkah/makkah";
+import Serenite from "../../../sections/Hajj/serenite/serenite";
+import FAQ from "../../../sections/Hajj/faq/faq";
 
 export default function HajjPage() {
   return (
@@ -39,7 +41,9 @@ export default function HajjPage() {
       <Strategy />
       <WhyUs />
       <Makkah />
-      
+      <Serenite />
+      <FAQ />
+
     </main>
   );
 }
