@@ -10,12 +10,21 @@ function CallbackInner() {
 
   useEffect(() => {
     const checkSession = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (error) {
+        console.error(error);
+      }
       if (!user) {
         router.replace("/");
         return;
       }
+      // Clean hash from OAuth fragment if present, then redirect
       const next = params.get("next") || "/hajj";
+      if (typeof window !== 'undefined' && window.location.hash) {
+        // Replace state without hash to avoid flashing tokens in URL
+        const cleanUrl = window.location.origin + window.location.pathname + window.location.search;
+        window.history.replaceState(null, "", cleanUrl);
+      }
       router.replace(next);
     };
 

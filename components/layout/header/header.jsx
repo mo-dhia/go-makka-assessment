@@ -63,7 +63,8 @@ export default function Header() {
       provider: "google",
       options: {
         redirectTo: `${window.location.origin}/auth/callback?next=/hajj`,
-        queryParams: { prompt: "select_account" }
+        queryParams: { prompt: "select_account" },
+        flowType: "pkce"
       }
     });
     if (error) console.error(error);
