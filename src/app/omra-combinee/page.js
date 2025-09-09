@@ -4,7 +4,7 @@ export default function OmraCombineePage() {
       <div style={{ textAlign: 'center', color: 'var(--color-text)' }}>
         <h1 style={{ marginBottom: '1rem' }}>Omra combinée</h1>
         <p style={{ marginBottom: '0.5rem' }}>Ceci est une démo. Vous êtes sur la page Omra combinée.</p>
-        <p>Combinez Omra avec d'autres destinations pour un voyage complet.</p>
+        <p>Combinez Omra avec d&#39;autres destinations pour un voyage complet.</p>
       </div>
     </main>
   );

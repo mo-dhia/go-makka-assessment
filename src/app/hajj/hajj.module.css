@@ -1,7 +1,7 @@
 .main { display: flex; flex-direction: column; gap: 2.50vw; }
-.row { display: flex; gap: 2.50vw; padding-right: 2.50vw; }
-.fullHeight { height: 100%; }
-.solutionsRight { width: 30%; }
+.row { display: flex; gap: 2.50vw; padding: 0 2.50vw; }
+.fullHeight { position: relative; align-self: stretch; }
+.solutionsRight { width: 32%; }
 
 
 @media screen and (max-width: 1024px) {

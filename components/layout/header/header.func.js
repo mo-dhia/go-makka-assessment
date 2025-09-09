@@ -3,14 +3,14 @@ import { usePathname } from "next/navigation";
 import { dimensionsStore } from "../../../store/dimensionStore";
 
 export function useHeaderLogic() {
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: "Accueil", label: "Accueil", href: "/" },
     { id: "Omra", label: "Omra", href: "/omra" },
     { id: "Omra combinée", label: "Omra combinée", href: "/omra-combinee" },
     { id: "Hajj", label: "Hajj", href: "/hajj" },
     { id: "Voyages Monde", label: "Voyages Monde", href: "/voyages-monde" },
     { id: "Nos services", label: "Nos services", href: "/nos-services" },
-  ];
+  ], []);
 
   const [activeItem, setActiveItem] = useState("Hajj");
   const [menuOpen, setMenuOpen] = useState(false);

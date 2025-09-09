@@ -20,6 +20,7 @@
 .linkButton { align-self: end; justify-self: end; background: none; border: none; color: var(--color-brand-blue); font-weight: 600; font-size: 0.83vw; cursor: pointer }
 
 @media screen and (max-width: 1024px) {
+  .wrapper { top: 15vw; position: sticky; }
   .container { max-width: 86.91vw }
   .title { font-size: 3.13vw; margin-bottom: 2.93vw }
   .accordion { border-width: 0.20vw; border-radius: 1.17vw }
