@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
-export default function Callback() {
+function CallbackInner() {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -23,6 +23,14 @@ export default function Callback() {
   }, [router, params]);
 
   return <p>Redirection…</p>;
+}
+
+export default function Callback() {
+  return (
+    <Suspense fallback={<p>Redirection…</p>}>
+      <CallbackInner />
+    </Suspense>
+  );
 }
 
 

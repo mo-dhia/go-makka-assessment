@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Banner from "../../../components/banner/banner";
 import HajjContextSection from "../../../sections/Hajj/context/context";
 import SupportTechniqueSection from "../../../sections/Hajj/supportTechnique/supportTechnique";
@@ -39,7 +40,9 @@ export default function HajjPage() {
       <HowItWorks />
       <Infos />
       <Strategy />
-      <WhyUs />
+      <Suspense fallback={null}>
+        <WhyUs />
+      </Suspense>
       <Makkah />
       <Serenite />
       <FAQ />
