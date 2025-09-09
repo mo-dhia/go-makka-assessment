@@ -20,3 +20,22 @@ a {
 }
 
 
+/* Design tokens (inspired by provided design) */
+:root {
+  --color-brand: #ab1222; /* primary red */
+  --color-text: #111111;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-background: #ffffff;
+
+  --font-heading: var(--font-montserrat, system-ui, Arial, sans-serif);
+  --font-body: var(--font-inter, system-ui, Arial, sans-serif);
+
+  --padding-base: 48px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+}
