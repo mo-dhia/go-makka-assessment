@@ -1,4 +1,4 @@
-.wrapper { width: 100%; width: 100%; position: sticky; top: 5vw;}
+.wrapper { width: 100%; width: 100%; }
 .container { width: 100%; max-width: 62.5vw; margin: 0 auto }
 .title { font-family: var(--font-heading); font-weight: 700; color: var(--color-brand-blue); font-size: 1.67vw; line-height: 1.3; margin-bottom: 1.67vw }
 
@@ -20,7 +20,7 @@
 .linkButton { align-self: end; justify-self: end; background: none; border: none; color: var(--color-brand-blue); font-weight: 600; font-size: 0.83vw; cursor: pointer }
 
 @media screen and (max-width: 1024px) {
-  .wrapper { top: 15vw; }
+  .wrapper { top: 15vw; position: sticky; }
   .container { max-width: 86.91vw }
   .title { font-size: 3.13vw; margin-bottom: 2.93vw }
   .accordion { border-width: 0.20vw; border-radius: 1.17vw }

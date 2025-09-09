@@ -5,7 +5,7 @@
 .list { display: grid; gap: 1.04vw }
 .card { background: #ffffff; border-radius: 0.63vw; padding: 1.25vw 1.56vw; box-shadow: 0 0.26vw 0.83vw rgba(0,0,0,0.06); position: relative; overflow: hidden }
 .cardTopLine { position: absolute; top: 0; bottom: 0; left: 0; width: 0.21vw; background: var(--color-brand-gold); border-radius: 0.63vw 0 0 0.63vw }
-.cardTitle { margin-top: 0; margin-left: 0.94vw; font-size: 0.94vw; font-weight: 700; color: #b78f2e }
+.cardTitle { margin-top: 0; margin-left: 0.94vw; font-size: 0.94vw; font-weight: 700; color: var(--color-brand-gold ) }
 .cardText { margin-top: 0.52vw; margin-left: 0.94vw; color: #4b5563; font-size: 0.89vw; line-height: 1.9 }
 
 @media screen and (max-width: 1024px) {
