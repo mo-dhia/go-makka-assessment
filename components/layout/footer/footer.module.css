@@ -1,0 +1,36 @@
+.footerRoot { background: #236AAE; color: #ffffff; margin-top: 6vw; }
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5vw;
+  padding: 3.33vw var(--padding-base);
+}
+
+.columnTitle { font-weight: 700; margin-bottom: 0.83vw; font-size: 0.94vw; }
+
+.linkList { list-style: none; display: flex; flex-direction: column; gap: 0.52vw; }
+.linkItem { list-style: none; }
+.link { color: #ffffff; text-decoration: underline; opacity: 0.95; font-size: 0.83vw; }
+
+.flagsBar { background: var(--color-background); padding: 0.83vw 0; }
+.flags { display: flex; justify-content: center; align-items: center; gap: 3vw; }
+.flag { width: 18px; height: 12px; display: inline-flex; align-items: center; justify-content: center; }
+.flag img { display: block; width: 100%; height: auto; }
+
+@media screen and (max-width: 1024px) {
+  .columns { grid-template-columns: repeat(3, 1fr); gap: 3.9vw; padding: 6.25vw var(--padding-base); }
+  .columnTitle { margin-bottom: 1.56vw; font-size: 1.56vw; }
+  .linkList { gap: 1.17vw; }
+  .link { font-size: 1.37vw; }
+}
+
+@media screen and (max-width: 600px) {
+  .columns { grid-template-columns: 1fr 1fr; gap: 6.11vw; padding: 8.14vw var(--padding-base); }
+  .flagsBar { padding: 2.54vw 0; }
+  .flag { width: 20px; height: 14px; }
+  .columnTitle { font-size: 3.56vw; margin-bottom: 2.04vw; }
+  .link { font-size: 3.05vw; }
+}
+
+
