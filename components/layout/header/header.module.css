@@ -1,0 +1,142 @@
+.headerRoot {
+  width: 100%;
+  background: var(--color-background);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--padding-base);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Top red bar */
+.topBar {
+  background-color: var(--color-brand);
+  color: #ffffff;
+}
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.logoTitle {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 28px;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 16px 0;
+}
+
+.phone {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.address {
+  font-family: var(--font-body);
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* Bottom white navigation bar */
+.navBar {
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.navItem a {
+  display: inline-block;
+  padding: 14px 0;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navButton {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 14px 0;
+  margin: 0;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.active a {
+  position: relative;
+}
+
+.active a::after,
+.active .navButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background-color: var(--color-brand);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.actionLink {
+  appearance: none;
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-border);
+  font-size: 10px;
+}
+
+/* Layout for nav row: menu left, actions right */
+.navBar .container {
+  height: 52px;
+}
+
+
