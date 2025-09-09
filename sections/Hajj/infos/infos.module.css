@@ -1,0 +1,29 @@
+.wrapper { width: 100%; padding-left: var(--padding-base); padding-right: var(--padding-base); padding-top: 3.13vw; padding-bottom: 3.13vw; background: #f8fafc }
+.container { width: 100%; max-width: 70.83vw; margin: 0 auto }
+.title { font-family: var(--font-heading); font-weight: 700; color: var(--color-brand-blue); font-size: 1.67vw; line-height: 1.3; margin-bottom: 1.56vw }
+
+.list { display: grid; gap: 1.04vw }
+.card { background: #ffffff; border-radius: 0.63vw; padding: 1.25vw 1.56vw; box-shadow: 0 0.26vw 0.83vw rgba(0,0,0,0.06); position: relative; overflow: hidden }
+.cardTopLine { position: absolute; top: 0; bottom: 0; left: 0; width: 0.21vw; background: var(--color-brand-gold); border-radius: 0.63vw 0 0 0.63vw }
+.cardTitle { margin-top: 0; margin-left: 0.94vw; font-size: 0.94vw; font-weight: 700; color: #b78f2e }
+.cardText { margin-top: 0.52vw; margin-left: 0.94vw; color: #4b5563; font-size: 0.89vw; line-height: 1.9 }
+
+@media screen and (max-width: 1024px) {
+  .container { max-width: 86.91vw }
+  .title { font-size: 3.13vw; margin-bottom: 2.93vw }
+  .list { gap: 1.95vw }
+  .card { border-radius: 1.17vw; padding: 2.44vw 2.93vw }
+  .cardTopLine { width: 0.39vw; border-radius: 1.17vw 0 0 1.17vw }
+  .cardTitle { margin-left: 1.76vw; font-size: 1.76vw }
+  .cardText { margin-left: 1.76vw; font-size: 1.56vw }
+}
+
+@media screen and (max-width: 600px) {
+  .container { max-width: 94vw }
+  .title { font-size: 6.63vw; margin-bottom: 6.1vw }
+  .list { gap: 3.81vw }
+  .card { border-radius: 3.81vw; padding: 4.83vw 6.1vw }
+  .cardTopLine { width: 1.02vw; border-radius: 3.81vw 0 0 3.81vw }
+  .cardTitle { margin-left: 4.83vw; font-size: 3.81vw }
+  .cardText { margin-left: 4.83vw; font-size: 3.3vw }
+}
