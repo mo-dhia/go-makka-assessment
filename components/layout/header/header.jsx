@@ -15,6 +15,7 @@ export default function Header() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    headerRef,
     navBarRef,
     navListRef,
     selectorRef,
@@ -22,7 +23,7 @@ export default function Header() {
   } = useHeaderLogic();
 
   return (
-    <header className={styles.headerRoot}>
+    <header className={styles.headerRoot} ref={headerRef}>
       <div className={styles.topBar}>
         <div className={styles.container}>
           <div className={styles.branding}>

@@ -17,6 +17,7 @@ export function useHeaderLogic() {
   const drawerRef = useRef(null);
   const backdropRef = useRef(null);
   const navBarRef = useRef(null);
+  const headerRef = useRef(null);
   const navListRef = useRef(null);
   const selectorRef = useRef(null);
   const itemRefs = useRef({});
@@ -78,7 +79,8 @@ export function useHeaderLogic() {
     const onScroll = () => {
       if (!isScrollInteractionEnabled || !nav) return;
 
-      if (window.scrollY <= nav.clientHeight) {
+      const headerHeight = headerRef.current ? headerRef.current.clientHeight : nav.clientHeight;
+      if (window.scrollY <= headerHeight) {
         if (nav.style.transform !== "translateY(0px)") {
           direction = "up";
           nav.style.transform = "translateY(0px)";
@@ -115,7 +117,7 @@ export function useHeaderLogic() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [vw]);
 
   const setItemRef = (key) => (el) => {
     if (el) itemRefs.current[key] = el;
@@ -130,6 +132,7 @@ export function useHeaderLogic() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    headerRef,
     navBarRef,
     navListRef,
     selectorRef,

@@ -182,7 +182,7 @@
   height: 2.71vw; /* 52px */
 }
 
-.selector { position: absolute; left: 0; bottom: -1px; height: 0.16vw; width: 0; background: var(--color-brand); opacity: 0; transition: transform 220ms ease, width 220ms ease, opacity 160ms ease 200ms; }
+.selector { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: var(--color-brand); opacity: 0; transition: transform 220ms ease, width 220ms ease, opacity 160ms ease 200ms; border-radius: 360px; }
 
 
 /* Tablet styles: 1024 reference */
