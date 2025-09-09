@@ -4,6 +4,9 @@ import SupportTechniqueSection from "../../../sections/Hajj/supportTechnique/sup
 import Issues from "../../../sections/Hajj/issues/issues";
 import Solutions from "../../../sections/Hajj/solutions/solutions";
 import styles from "./hajj.module.css";
+import HowItWorks from "../../../sections/Hajj/howItWorks/howItWorks";
+import Infos from "../../../sections/Hajj/infos/infos";
+import Strategy from "../../../sections/Hajj/strategy/strategy";
 
 export default function HajjPage() {
   return (
@@ -15,7 +18,7 @@ export default function HajjPage() {
       />
 
       <div className={styles.row}>
-          <HajjContextSection />
+        <HajjContextSection />
         <div className={styles.fullHeight}>
           <SupportTechniqueSection />
         </div>
@@ -23,11 +26,15 @@ export default function HajjPage() {
 
 
       <div className={styles.row}>
-          <Issues />
+        <Issues />
         <div className={`${styles.fullHeight} ${styles.solutionsRight}`}>
           <Solutions />
         </div>
       </div>
+
+      <HowItWorks />
+      <Infos />
+      <Strategy />
     </main>
   );
 }
