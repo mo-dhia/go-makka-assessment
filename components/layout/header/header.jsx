@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./header.module.css";
 import { Menu } from "../../icons/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useHeaderLogic } from "./header.func";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Header() {
   const {
@@ -29,6 +30,44 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const currentItemLabel = (navItems.find((it) => it.id === activeNavId)?.label) || activeItem;
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const init = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!isMounted) return;
+      setUser(user ?? null);
+    };
+    init();
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      isMounted = false;
+      listener?.subscription?.unsubscribe?.();
+    };
+  }, []);
+
+  const displayName = useMemo(() => {
+    if (!user) return null;
+    const name = user.user_metadata?.full_name || user.user_metadata?.name;
+    return name || user.email || "Mon compte";
+  }, [user]);
+
+  const handleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=/hajj`,
+        queryParams: { prompt: "select_account" }
+      }
+    });
+    if (error) console.error(error);
+  };
 
   return (
     <>
@@ -77,11 +116,11 @@ export default function Header() {
           </ul>
 
           <div className={styles.actions}>
-            <button type="button" className={styles.actionLink}>
+            <button type="button" className={styles.actionLink} onClick={!user ? handleLogin : undefined}>
               <span className={styles.icon} aria-hidden>
                 <img src="/imgs/account.png" alt="" />
               </span>
-              <span>Mon compte</span>
+              <span>{user ? displayName : "Connectez-vous"}</span>
             </button>
             <button type="button" className={styles.actionLink}>
               <span className={styles.icon} aria-hidden>
