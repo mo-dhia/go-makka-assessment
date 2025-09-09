@@ -85,11 +85,7 @@
 
 .hamburger span + span { margin-top: 0.31vw; }
 
-.navList {
-  list-style: none;
-  display: flex;
-  gap: 1.25vw; /* 24px */
-}
+.navList { list-style: none; display: flex; gap: 1.25vw; position: relative; }
 
 .currentItem {
   display: none;
@@ -174,6 +170,8 @@
 .navBar .container {
   height: 2.71vw; /* 52px */
 }
+
+.selector { position: absolute; left: 0; bottom: -1px; height: 0.16vw; width: 0; background: var(--color-brand); opacity: 0; transition: transform 220ms ease, width 220ms ease, opacity 160ms ease 200ms; }
 
 
 /* Tablet styles: 1024 reference */

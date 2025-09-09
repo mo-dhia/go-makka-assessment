@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { dimensionsStore } from "../../../store/dimensionStore";
 
 export function useHeaderLogic() {
   const navItems = [
@@ -15,6 +16,10 @@ export function useHeaderLogic() {
 
   const drawerRef = useRef(null);
   const backdropRef = useRef(null);
+  const navListRef = useRef(null);
+  const selectorRef = useRef(null);
+  const itemRefs = useRef({});
+  const vw = dimensionsStore((s) => s.vw);
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -43,6 +48,27 @@ export function useHeaderLogic() {
 
   const toggleMenu = () => setMenuOpen((v) => !v);
 
+  useEffect(() => {
+    const container = navListRef.current;
+    const selector = selectorRef.current;
+    const activeEl = itemRefs.current[activeItem];
+    if (!container || !selector || !activeEl) {
+      if (selector) selector.style.opacity = 0;
+      return;
+    }
+    requestAnimationFrame(() => {
+      const left = activeEl.offsetLeft;
+      const width = activeEl.offsetWidth;
+      selector.style.transform = `translateX(${left}px)`;
+      selector.style.width = `${width}px`;
+      selector.style.opacity = 1;
+    });
+  }, [activeItem, vw]);
+
+  const setItemRef = (key) => (el) => {
+    if (el) itemRefs.current[key] = el;
+  };
+
   return {
     navItems,
     activeItem,
@@ -52,6 +78,9 @@ export function useHeaderLogic() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    navListRef,
+    selectorRef,
+    setItemRef,
   };
 }
 

@@ -15,6 +15,9 @@ export default function Header() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    navListRef,
+    selectorRef,
+    setItemRef,
   } = useHeaderLogic();
 
   return (
@@ -39,13 +42,13 @@ export default function Header() {
             <Menu className={styles.hamburgerIcon} />
           </button>
 
-          <ul className={styles.navList}>
+          <ul className={styles.navList} ref={navListRef}>
             {navItems.map((item) => (
               <li
                 key={item}
-                className={`${styles.navItem} ${
-                  activeItem === item ? styles.active : ""
-                }`}
+                className={`${styles.navItem} ${activeItem === item ? styles.active : ""
+                  }`}
+                ref={setItemRef(item)}
               >
                 <button
                   type="button"
@@ -57,6 +60,7 @@ export default function Header() {
                 </button>
               </li>
             ))}
+            <div className={styles.selector} ref={selectorRef} />
           </ul>
 
           <div className={styles.actions}>
@@ -91,9 +95,8 @@ export default function Header() {
               {navItems.map((item) => (
                 <li
                   key={item}
-                  className={`${styles.drawerNavItem} ${
-                    activeItem === item ? styles.drawerNavItemActive : ""
-                  }`}
+                  className={`${styles.drawerNavItem} ${activeItem === item ? styles.drawerNavItemActive : ""
+                    }`}
                 >
                   <button
                     type="button"
@@ -107,6 +110,8 @@ export default function Header() {
                   </button>
                 </li>
               ))}
+
+             
             </ul>
           </aside>
         </div>
