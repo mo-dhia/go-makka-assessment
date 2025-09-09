@@ -6,6 +6,8 @@
   z-index: 100;
 }
 
+.topBarSpacer { height: 4.43vw }
+
 .container {
   width: 100%;
   margin: 0 auto;
@@ -192,10 +194,15 @@
   .actionLink { gap: 0.78vw; }
   .icon { width: 1.56vw; height: 1.56vw; font-size: 0.98vw; }
   .navBar .container { height: 5.08vw; }
+
+.topBarSpacer { height: 8.29vw }
+
 }
 
 /* Mobile styles: 393 reference */
 @media screen and (max-width: 600px) {
+  .topBarSpacer { height: 23.30vw }
+
   .hamburger { display: inline-flex; width: 8.14vw; height: 8.14vw; }
   .hamburgerIcon { width: 100%; height: 100%; }
   .navList { display: none; }

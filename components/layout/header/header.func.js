@@ -20,7 +20,7 @@ export function useHeaderLogic() {
   const navBarRef = useRef(null);
   const headerRef = useRef(null);
   const topBarRef = useRef(null);
-  const [topBarHeight, setTopBarHeight] = useState(0);
+  const topBarSpacerRef = useRef(null);
   const navListRef = useRef(null);
   const selectorRef = useRef(null);
   const itemRefs = useRef({});
@@ -35,12 +35,18 @@ export function useHeaderLogic() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // Measure top bar height to push content below fixed header
+  // Measure top bar height to push content below fixed header without overriding CSS fallback initially
   useEffect(() => {
     const el = topBarRef.current;
-    if (!el) return;
-    const update = () => setTopBarHeight(el.clientHeight || 0);
-    update();
+    const spacer = topBarSpacerRef.current;
+    if (!el || !spacer) return;
+    const update = () => {
+      const height = el.clientHeight || 0;
+      if (height > 0) {
+        spacer.style.height = `${height}px`;
+      }
+    };
+    requestAnimationFrame(update);
   }, [vw]);
 
   useEffect(() => {
@@ -170,7 +176,7 @@ export function useHeaderLogic() {
     selectorRef,
     setItemRef,
     activeNavId,
-    topBarHeight,
+    topBarSpacerRef,
   };
 }
 

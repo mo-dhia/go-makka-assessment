@@ -24,7 +24,7 @@ export default function Header() {
     selectorRef,
     setItemRef,
     activeNavId,
-    topBarHeight,
+    topBarSpacerRef,
   } = useHeaderLogic();
   const pathname = usePathname();
   const router = useRouter();
@@ -127,7 +127,7 @@ export default function Header() {
       </nav>
     </header>
     {/* Spacer pushes page content below fixed header's red top bar */}
-    <div style={{ height: topBarHeight }} />
+    <div className={styles.topBarSpacer} ref={topBarSpacerRef} />
     </>
   );
 }
