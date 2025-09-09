@@ -19,17 +19,20 @@ export default function Header() {
     backdropRef,
     headerRef,
     navBarRef,
+    topBarRef,
     navListRef,
     selectorRef,
     setItemRef,
     activeNavId,
+    topBarHeight,
   } = useHeaderLogic();
   const pathname = usePathname();
   const router = useRouter();
 
   return (
+    <>
     <header className={styles.headerRoot} ref={headerRef}>
-      <div className={styles.topBar}>
+      <div className={styles.topBar} ref={topBarRef}>
         <div className={styles.container}>
           <div className={styles.branding}>
             <div className={styles.logoTitle}>GO-MAKKAH</div>
@@ -122,6 +125,9 @@ export default function Header() {
         </div>
       </nav>
     </header>
+    {/* Spacer pushes page content below fixed header's red top bar */}
+    <div style={{ height: topBarHeight }} />
+    </>
   );
 }
 
