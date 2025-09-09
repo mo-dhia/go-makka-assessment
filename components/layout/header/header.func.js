@@ -19,6 +19,8 @@ export function useHeaderLogic() {
   const backdropRef = useRef(null);
   const navBarRef = useRef(null);
   const headerRef = useRef(null);
+  const topBarRef = useRef(null);
+  const [topBarHeight, setTopBarHeight] = useState(0);
   const navListRef = useRef(null);
   const selectorRef = useRef(null);
   const itemRefs = useRef({});
@@ -32,6 +34,14 @@ export function useHeaderLogic() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  // Measure top bar height to push content below fixed header
+  useEffect(() => {
+    const el = topBarRef.current;
+    if (!el) return;
+    const update = () => setTopBarHeight(el.clientHeight || 0);
+    update();
+  }, [vw]);
 
   useEffect(() => {
     function onClickOutside(e) {
@@ -155,10 +165,12 @@ export function useHeaderLogic() {
     backdropRef,
     headerRef,
     navBarRef,
+    topBarRef,
     navListRef,
     selectorRef,
     setItemRef,
     activeNavId,
+    topBarHeight,
   };
 }
 
