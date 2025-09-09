@@ -28,6 +28,7 @@ export default function Header() {
   } = useHeaderLogic();
   const pathname = usePathname();
   const router = useRouter();
+  const currentItemLabel = (navItems.find((it) => it.id === activeNavId)?.label) || activeItem;
 
   return (
     <>
@@ -55,7 +56,7 @@ export default function Header() {
 
       <nav className={styles.navBar} ref={navBarRef}>
         <div className={styles.container}>
-          <div className={styles.currentItem} aria-live="polite">{activeItem}</div>
+          <div className={styles.currentItem} aria-live="polite">{currentItemLabel}</div>
           <button type="button" className={styles.hamburger} onClick={toggleMenu} aria-label="Ouvrir le menu">
             <Menu className={styles.hamburgerIcon} />
           </button>
