@@ -1,16 +1,12 @@
-import { Inter, Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/../components/layout/header/header";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   weight: [
+    "300",
     "400",
     "500",
     "600",
@@ -27,7 +23,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable}`}>
+      <body className={`${poppins.variable}`}>
         <Header />
         {children}
       </body>
