@@ -14,6 +14,6 @@
     /* .row { align-items: center;} */
     .solutionsRight { width: 100%; }
     .row { flex-direction: column; padding: 0 .3vw !important; }
-    .main { gap: 27.5vw;}
+    .main { gap: 27.5vw; margin-bottom: 27.5vw;}
 
 }
