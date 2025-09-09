@@ -29,8 +29,16 @@ export default function Header() {
             <div className={styles.tagline}>Quand foi et prestige se rencontrent</div>
           </div>
           <div className={styles.contact}>
-            <div className={styles.phone}>01 49 87 70 21</div>
-            <div className={styles.address}>32 avenue Pierre Semarde, 94200</div>
+            <a className={styles.phone} href="tel:+33149877021" aria-label="Appeler le numéro 01 49 87 70 21">01 49 87 70 21</a>
+            <a
+              className={styles.address}
+              href="https://www.google.com/maps/search/?api=1&query=32%20avenue%20Pierre%20Semarde%2C%2094200"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ouvrir l'adresse dans Google Maps"
+            >
+              32 avenue Pierre Semarde, 94200
+            </a>
           </div>
         </div>
       </div>
