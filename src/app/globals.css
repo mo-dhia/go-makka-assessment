@@ -23,6 +23,8 @@ a {
 /* Design tokens (inspired by provided design) */
 :root {
   --color-brand: #ab1222; /* primary red */
+  --color-brand-blue: #1e63ac; /* GO blue */
+  --color-brand-gold: #b7902e; /* headline gold */
   --color-text: #111111;
   --color-muted: #6b7280;
   --color-border: #e5e7eb;
