@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./header.module.css";
 
 export default function Header() {
@@ -14,6 +14,37 @@ export default function Header() {
   ];
 
   const [activeItem, setActiveItem] = useState("Hajj");
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const drawerRef = useRef(null);
+  const backdropRef = useRef(null);
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === "Escape") setMenuOpen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    function onClickOutside(e) {
+      if (!menuOpen) return;
+      const target = e.target;
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(target) &&
+        backdropRef.current &&
+        backdropRef.current.contains(target)
+      ) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   return (
     <header className={styles.headerRoot}>
@@ -32,6 +63,12 @@ export default function Header() {
 
       <nav className={styles.navBar}>
         <div className={styles.container}>
+          <button type="button" className={styles.hamburger} onClick={toggleMenu} aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
           <ul className={styles.navList}>
             {navItems.map((item) => (
               <li
@@ -55,17 +92,48 @@ export default function Header() {
           <div className={styles.actions}>
             <button type="button" className={styles.actionLink}>
               <span className={styles.icon} aria-hidden>
-                ◦
+                <img src="/imgs/account.png" alt="" />
               </span>
               <span>Mon compte</span>
             </button>
             <button type="button" className={styles.actionLink}>
               <span className={styles.icon} aria-hidden>
-                ◦
+                <img src="/imgs/chat.png" alt="" />
               </span>
               <span>Espace client</span>
             </button>
           </div>
+        </div>
+
+        {/* Backdrop and drawer for mobile */}
+        <div
+          ref={backdropRef}
+          className={`${styles.backdrop} ${menuOpen ? styles.backdropOpen : ""}`}
+          aria-hidden={!menuOpen}
+        >
+          <aside
+            ref={drawerRef}
+            className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ""}`}
+            role="dialog"
+            aria-label="Menu"
+          >
+            <ul className={styles.drawerNavList}>
+              {navItems.map((item) => (
+                <li key={item} className={styles.drawerNavItem}>
+                  <button
+                    type="button"
+                    className={styles.drawerNavButton}
+                    onClick={() => {
+                      setActiveItem(item);
+                      setMenuOpen(false);
+                    }}
+                  >
+                    {item}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </nav>
     </header>
