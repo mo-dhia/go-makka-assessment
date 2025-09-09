@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/../components/layout/header/header";
+import Initializer from "@/../utils/initializer/initializer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,6 +27,8 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable}`}>
         <Header />
         {children}
+
+        <Initializer />
       </body>
     </html>
   );
