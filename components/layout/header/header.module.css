@@ -20,6 +20,9 @@
 .topBar {
   background-color: var(--color-brand);
   color: #ffffff;
+  position: relative;
+  z-index: 1;
+
 }
 
 .branding {
@@ -66,10 +69,7 @@
 }
 
 /* Bottom white navigation bar */
-.navBar {
-  background-color: var(--color-background);
-  border-bottom: 1px solid var(--color-border);
-}
+.navBar { background-color: var(--color-background); border-bottom: 1px solid var(--color-border); will-change: transform; transition: transform 220ms ease, box-shadow 160ms ease; }
 
 .hamburger {
   display: none;

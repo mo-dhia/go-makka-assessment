@@ -16,6 +16,7 @@ export function useHeaderLogic() {
 
   const drawerRef = useRef(null);
   const backdropRef = useRef(null);
+  const navBarRef = useRef(null);
   const navListRef = useRef(null);
   const selectorRef = useRef(null);
   const itemRefs = useRef({});
@@ -65,6 +66,57 @@ export function useHeaderLogic() {
     });
   }, [activeItem, vw]);
 
+  // Smooth hide/show of navbar on scroll (translateY)
+  useEffect(() => {
+    const nav = navBarRef.current;
+    if (!nav) return;
+
+    let prevScroll = typeof window !== "undefined" ? window.scrollY : 0;
+    let direction = null;
+    const isScrollInteractionEnabled = true;
+
+    const onScroll = () => {
+      if (!isScrollInteractionEnabled || !nav) return;
+
+      if (window.scrollY <= nav.clientHeight) {
+        if (nav.style.transform !== "translateY(0px)") {
+          direction = "up";
+          nav.style.transform = "translateY(0px)";
+        }
+        if (nav.style.boxShadow !== "none") {
+          nav.style.boxShadow = "none";
+        }
+      } else {
+        if (nav.style.boxShadow !== "var(--shadow-bottom)") {
+          nav.style.boxShadow = "var(--shadow-bottom)";
+        }
+
+        if (!direction) {
+          nav.style.transform = "translateY(-100%)";
+          direction = "down";
+        } else {
+          if (prevScroll < window.scrollY) {
+            if (direction === "up") {
+              nav.style.transform = "translateY(-100%)";
+            }
+            direction = "down";
+          } else if (prevScroll > window.scrollY) {
+            if (direction === "down") {
+              nav.style.transform = "translateY(0px)";
+            }
+            direction = "up";
+          }
+        }
+      }
+      prevScroll = window.scrollY;
+    };
+
+    // Initialize and listen
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const setItemRef = (key) => (el) => {
     if (el) itemRefs.current[key] = el;
   };
@@ -78,6 +130,7 @@ export function useHeaderLogic() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    navBarRef,
     navListRef,
     selectorRef,
     setItemRef,

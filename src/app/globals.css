@@ -27,6 +27,7 @@ a {
   --color-muted: #6b7280;
   --color-border: #e5e7eb;
   --color-background: #ffffff;
+  --shadow-bottom: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   --font-heading: var(--font-poppins, system-ui, Arial, sans-serif);
   --font-body: var(--font-poppins, system-ui, Arial, sans-serif);

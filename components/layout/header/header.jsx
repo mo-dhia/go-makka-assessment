@@ -15,6 +15,7 @@ export default function Header() {
     toggleMenu,
     drawerRef,
     backdropRef,
+    navBarRef,
     navListRef,
     selectorRef,
     setItemRef,
@@ -43,7 +44,7 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className={styles.navBar}>
+      <nav className={styles.navBar} ref={navBarRef}>
         <div className={styles.container}>
           <div className={styles.currentItem} aria-live="polite">{activeItem}</div>
           <button type="button" className={styles.hamburger} onClick={toggleMenu} aria-label="Ouvrir le menu">
