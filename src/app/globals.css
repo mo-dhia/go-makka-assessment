@@ -23,10 +23,13 @@ a {
 /* Design tokens (inspired by provided design) */
 :root {
   --color-brand: #ab1222; /* primary red */
+  --color-brand-blue: #1e63ac; /* GO blue */
+  --color-brand-gold: #BE9E4A; /* headline gold */
   --color-text: #111111;
   --color-muted: #6b7280;
   --color-border: #e5e7eb;
   --color-background: #ffffff;
+  --color-background-base: #fafafa;
   --shadow-bottom: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   --font-heading: var(--font-poppins, system-ui, Arial, sans-serif);
@@ -53,7 +56,7 @@ a {
 body {
   font-family: var(--font-body);
   color: var(--color-text);
-  background: var(--color-background);
+  background: var(--color-background-base);
 }
 
 

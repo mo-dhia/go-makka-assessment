@@ -1,0 +1,18 @@
+.main { display: flex; flex-direction: column; gap: 2.50vw; }
+.row { display: flex; gap: 2.50vw; padding-right: 2.50vw; }
+.fullHeight { height: 100%; }
+.solutionsRight { width: 30%; }
+
+
+@media screen and (max-width: 1024px) {
+    /* .row { align-items: center;} */
+    .solutionsRight { width: 87%; }
+
+}
+
+@media screen and (max-width: 600px) {
+    /* .row { align-items: center;} */
+    .solutionsRight { width: 100%; }
+    .row { flex-direction: column; padding: 0 .3vw !important; }
+
+}
