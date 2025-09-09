@@ -7,6 +7,8 @@ import styles from "./hajj.module.css";
 import HowItWorks from "../../../sections/Hajj/howItWorks/howItWorks";
 import Infos from "../../../sections/Hajj/infos/infos";
 import Strategy from "../../../sections/Hajj/strategy/strategy";
+import WhyUs from "../../../sections/Hajj/whyUs/whyUs";
+import Makkah from "../../../sections/Hajj/makkah/makkah";
 
 export default function HajjPage() {
   return (
@@ -35,6 +37,9 @@ export default function HajjPage() {
       <HowItWorks />
       <Infos />
       <Strategy />
+      <WhyUs />
+      <Makkah />
+      
     </main>
   );
 }
